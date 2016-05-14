@@ -20,9 +20,17 @@ object TestStream {
     val channels = if (args.length > 0) sparkContext.textFile(args(0)).collect().toList
     else List("#en.wikisource", "#en.wikibooks", "#en.wikinews", "#en.wikiquote", "#en.wikipedia", "#wikidata.wikipedia")
 
-    val temp = WikiStreamUtils.createStream(ssc, StorageLevel.MEMORY_ONLY, "irc.wikimedia.org", 6667, channels)
+    val stream = WikiStreamUtils.createStream(ssc, StorageLevel.MEMORY_ONLY, "irc.wikimedia.org", 6667, channels)
 
-    temp.foreachRDD(rdd => println(rdd.name))
+    stream.foreachRDD { rdd =>
+      rdd.foreachPartition { records =>
+        records.foreach { record =>
+          println("***********************")
+          println(record.title)
+          println("***********************")
+        }
+      }
+    }
 
     ssc.start() // Start the computation
     ssc.awaitTermination() // Wait for the computation to terminate
