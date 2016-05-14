@@ -6,6 +6,8 @@ scalaVersion := "2.10.5"
 
 javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 
+assemblyJarName in assembly := "spark-wikistream-example"
+
 val sparkVersion = "1.6.1"
 
 // additional libraries
@@ -25,9 +27,11 @@ libraryDependencies ++= Seq(
   //"org.apache.hadoop" % "hadoop-common" % "2.6.0" % "provided"
 
 )
+/*
 ivyScala := ivyScala.value map {
-  _.copy(overrideScalaVersion = true)
+ _.copy(overrideScalaVersion = true)
 }
+*/
 
 assemblyMergeStrategy in assembly := {
   case m if m.toLowerCase.endsWith("manifest.mf") => MergeStrategy.discard
