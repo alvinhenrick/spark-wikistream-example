@@ -1,16 +1,17 @@
 package com.wiki.consume
 
-import com.wiki.common.WikiEdit
+import com.wiki.common.{Protocols, WikiEdit}
 import kafka.serializer.StringDecoder
 import org.apache.spark._
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.kafka._
 import spray.json._
-import com.wiki.common.WikiJsonProtocol._
+
+
 /**
   * Created by shona on 5/9/16.
   */
-object WikiConsumeStream {
+object WikiConsumeStream extends Protocols {
 
   def main(args: Array[String]) {
     /** Spark initialization **/

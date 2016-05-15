@@ -1,5 +1,6 @@
 package com.wiki.produce
 
+import com.wiki.common.Protocols
 import com.wiki.factory.KafkaProducerFactory
 import com.wiki.utils.WikiStreamUtils
 import org.apache.kafka.clients.producer.{ProducerConfig, ProducerRecord}
@@ -7,13 +8,12 @@ import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 import spray.json._
-import com.wiki.common.WikiJsonProtocol._
 
 
 /**
   * Created by Alvin on 5/2/16.
   */
-object WikiProduceStream {
+object WikiProduceStream extends Protocols {
 
   def main(args: Array[String]) = {
 
