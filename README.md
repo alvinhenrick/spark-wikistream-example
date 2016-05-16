@@ -2,13 +2,12 @@
 
 ## Prerequisite
 JAVA Version 7  
-SBT Version 0.13.11 
+SBT Version 0.13.11  
 SCALA Version 2.10.5  
-SPARK Version 1.6.1 
-MAVEN 3.3.+
-DOCKER 1.11.1
-DOCKER COMPOSE 1.7.0
- 
+SPARK Version 1.6.1  
+MAVEN 3.3.9  
+DOCKER 1.11.1  
+DOCKER COMPOSE 1.7.0  
  
 The example application demonstrate Apache Spark Streaming with Kafka.The application runs inside Docker containers.
 
