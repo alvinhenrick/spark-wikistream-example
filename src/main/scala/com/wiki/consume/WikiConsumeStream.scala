@@ -9,7 +9,7 @@ import spray.json._
 
 
 /**
-  * Created by shona on 5/9/16.
+  * Created by Alvin on 5/9/16.
   */
 object WikiConsumeStream extends Protocols {
 
