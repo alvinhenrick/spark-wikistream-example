@@ -20,9 +20,8 @@ class WikiIrcReceiver(storageLevel: StorageLevel,
                      ) extends Receiver[WikiEdit](storageLevel) with Logging {
 
   val Regex = """^.*\[\[(.+?)\]\].\s(.*)\s.*(https?://[^\s]+).*[*]\s(.*?)\s.*[*]\s\((.*?)\)(.*)$""".r
-  var botX: PircBotX = _
 
-  def create: PircBotX = {
+  private def create: PircBotX = {
     val nick = s"sparkstream-${Random.nextLong()}"
 
     val charCode = Charset.forName("UTF-8")
@@ -43,18 +42,6 @@ class WikiIrcReceiver(storageLevel: StorageLevel,
     new PircBotX(config.buildConfiguration)
   }
 
-  def onStop(): Unit = {
-    botX.stopBotReconnect()
-  }
-
-  def onStart(): Unit = {
-    logInfo("starting IRC bot")
-    botX = create
-    botX.startBot()
-    logInfo("Disconnected from WikiServer Server")
-  }
-
-
   private def processMessage(line: String, channel: String, timestamp: Long): Option[WikiEdit] = try {
     val input = line.replaceAll("[^\\x20-\\x7E]", "")
     input match {
@@ -67,6 +54,18 @@ class WikiIrcReceiver(storageLevel: StorageLevel,
       logWarning(s"could not parse input line: $line, error $ex")
       None
     }
+  }
+
+  lazy val botX: PircBotX = create
+
+  def onStop(): Unit = {
+    botX.stopBotReconnect()
+  }
+
+  def onStart(): Unit = {
+    logInfo("starting IRC bot")
+    botX.startBot()
+    logInfo("Disconnected from WikiServer Server")
   }
 
 }
