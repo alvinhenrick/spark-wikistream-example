@@ -29,7 +29,10 @@ Below are the steps to setup and run the example.
 
 4.Start all containers by running the following command.
 
-`docker-compose up -d`
+```
+docker network create hadoop
+docker-compose up -d
+```
 
 5.Open two separate terminals and change directory to _spark-wikistream-example_ 
 
