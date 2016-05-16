@@ -24,7 +24,7 @@ git clone https://github.com/alvinhenrick/spark-wikistream-example.git
 
 `./buildall.sh`
 
-3.Get into _spark-wikistream-example_ directory and do the maven build to build uber jar
+3.Get into _spark-wikistream-example_ directory and do the maven build to create uber jar
 
 `mvn clean package`
 
