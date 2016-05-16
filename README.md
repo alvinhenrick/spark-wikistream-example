@@ -15,8 +15,10 @@ Below are the steps to setup and run the example.
 
 1.Clone these repositories
 
-`git clone https://github.com/alvinhenrick/awesome-data`
-`git clone https://github.com/alvinhenrick/spark-wikistream-example.git`
+```
+git clone https://github.com/alvinhenrick/awesome-data
+git clone https://github.com/alvinhenrick/spark-wikistream-example.git
+```
 
 2.Get into _awesome-data_ directory and build docker images by running the following shell script
 
